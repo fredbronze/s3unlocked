@@ -57,6 +57,8 @@ Map_2F26A:		dc.w word_2F2E0-Map_2F26A
 		dc.w word_2F754-Map_2F26A
 		dc.w word_2F768-Map_2F26A
 		dc.w word_2F588-Map_2F26A
+		dc.w Map_Results_MIGHTY-Map_2F26A
+		dc.w Map_Results_RAY-Map_2F26A
 word_2F2E0:	dc.w 0			
 word_2F2E2:	dc.w 1			
 		dc.b	0,   1,	$A5, $20,   0,	 0
@@ -118,13 +120,13 @@ word_2F3DA:	dc.w 3
 		dc.b	0,  $D,	$85, $80,   0, $26
 		dc.b	0,   1,	$85, $88,   0, $46
 word_2F3EE:	dc.w 2			
-		dc.b	0,  $D,	$85, $78,   0,	 1
-		dc.b	0,  $D,	$85, $80,   0, $21
+		dc.b	0,  $D,	$85, $78,   0,	 8
+		dc.b	0,  $D,	$85, $80,   0, $28
 word_2F3FC:	dc.w 4			
-		dc.b	0,  $D,	$85, $78,   0,	 4
-		dc.b	0,  $D,	$85, $80,   0, $24
-		dc.b	0,  $D,	$85, $88,   0, $44
-		dc.b	0,   9,	$85, $90,   0, $64
+		dc.b	0,  $D,	$85, $78, $FF, $D4
+		dc.b	0,  $D,	$85, $80, $FF, $F4
+		dc.b	0,  $D,	$85, $88,   0, $14
+		dc.b	0,   9,	$85, $90,   0, $34
 word_2F416:	dc.w 5			
 		dc.b	0,  $D,	$E6, $D4, $FF, $A0
 		dc.b	0,   1,	$E6, $E8, $FF, $C0
@@ -295,3 +297,10 @@ word_2F768:	dc.w 3
 		dc.b	0,  $D,	$85, $8D,   0,	 0
 		dc.b	0,  $D,	$85, $95,   0, $20
 		dc.b  $F6,   6,	$85, $CC,   0, $3C
+Map_Results_MIGHTY:dc.w 3		
+		dc.b	0,  $D,	$85, $78, $FF, $F1
+		dc.b	0,  $D,	$85, $80,   0, $11
+		dc.b	0,   9,	$85, $88,   0, $31
+Map_Results_RAY:dc.w 2			
+		dc.b	0,  $D,	$85, $78,   0, $17
+		dc.b	0,   5,	$85, $80,   0, $37

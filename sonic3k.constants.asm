@@ -708,6 +708,7 @@ ArtTile_TailsTail_P2                  = $06B0
 ArtTile_Ring                          = $06C6		; Fred - relocate HUD
 ArtTile_Shield                        = $079C
 ArtTile_Shield_Sparks                 = $07BB
+ArtTile_LifeIcon                      = $07D4
 ArtTile_DashDust                      = $07E0
 ArtTile_DashDust_P2                   = $07F0
 
