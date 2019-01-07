@@ -526,7 +526,6 @@ Level_frame_counter =		ramaddr( $FFFFFE04 ) ; word ; the number of frames which 
 Debug_object =			ramaddr( $FFFFFE06 ) ; byte ; the current position in the debug mode object list
 Debug_placement_mode =		ramaddr( $FFFFFE08 ) ; word ; both routine and type
 Debug_placement_routine =	ramaddr( $FFFFFE08 ) ; byte
-Debug_placement_type =		ramaddr( $FFFFFE09 ) ; byte ; 0 = normal gameplay, 1 = normal object placement, 2 = frame cycling
 V_int_run_count =		ramaddr( $FFFFFE0C ) ; long ; the number of times V-int has run
 Current_zone_and_act =		ramaddr( $FFFFFE10 ) ; word
 Current_zone =			ramaddr( $FFFFFE10 ) ; byte
