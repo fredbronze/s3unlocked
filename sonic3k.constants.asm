@@ -628,14 +628,12 @@ Saved2_status_secondary =	ramaddr( $FFFFFF96 ) ; byte
 Saved_apparent_zone_and_act =	ramaddr( $FFFFFF9A ) ; word
 Saved2_apparent_zone_and_act =	ramaddr( $FFFFFF9C ) ; word
 
-Encore_stack =			ramaddr( $FFFFFFA0 ) ; word
 Blue_spheres_current_stage =	ramaddr( $FFFFFFA2 ) ; 4 bytes ; the layout parts that make up the current stage
 Blue_spheres_current_level =	ramaddr( $FFFFFFA6 ) ; long ; number shown at the top of the full game menu
 Blue_spheres_option =		ramaddr( $FFFFFFAA ) ; byte ; 0 = level, 1 = start, 2 = code
 Blue_spheres_menu_flag =	ramaddr( $FFFFFFAB ) ; byte ; 0 = single stage, 1 = normal, bit 7 set = entering a code
 Blue_spheres_difficulty =	ramaddr( $FFFFFFAC ) ; byte ; value currently displayed
 Blue_spheres_target_difficulty = ramaddr( $FFFFFFAD ) ; byte ; value read from the layout
-Encore_mode =			ramaddr( $FFFFFFAE) ; byte
 
 Emerald_count =			ramaddr( $FFFFFFB0 ) ; word ; both chaos and super emeralds
 Chaos_emerald_count =		ramaddr( $FFFFFFB0 ) ; byte
@@ -659,6 +657,8 @@ Debug_mode_cheat_counter =	ramaddr( $FFFFFFE6 ) ; word ; progress entering S3 de
 Competition_mode =		ramaddr( $FFFFFFE8 ) ; word
 P1_character =			ramaddr( $FFFFFFEA ) ; byte ; 0 = Sonic, 1 = Tails, 2 = Knuckles
 P2_character =			ramaddr( $FFFFFFEB ) ; byte
+Encore_stocks =			ramaddr( $FFFFFFEC ) ; word
+Encore_mode =			ramaddr( $FFFFFFEE ) ; byte
 
 V_int_jump =			ramaddr( $FFFFFFF0 ) ; 6 bytes ; contains an instruction to jump to the V-int handler
 V_int_addr =			ramaddr( $FFFFFFF2 ) ; long
@@ -702,9 +702,8 @@ ArtTile_ArtKos_Save_Extra             = $0454
 ArtTile_Monitors                      = $04C4
 ArtTile_CutsceneKnux                  = $04DA
 ArtTile_Player_1                      = $0680
-ArtTile_TailsTail                     = $0690
 ArtTile_Player_2                      = $06A0
-ArtTile_TailsTail_P2                  = $06B0
+ArtTile_Player_2_Tail                 = $06B0
 ArtTile_Ring                          = $06C6		; Fred - relocate HUD
 ArtTile_Shield                        = $079C
 ArtTile_Shield_Sparks                 = $07BB
