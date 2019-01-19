@@ -282,6 +282,7 @@ Special_stage_anim_frame =	ramaddr( $FFFFE420 ) ; word ; special stage globe's c
 Special_stage_X_pos =		ramaddr( $FFFFE422 ) ; word
 Special_stage_Y_pos =		ramaddr( $FFFFE424 ) ; word
 Special_stage_angle =		ramaddr( $FFFFE426 ) ; byte ; $00 = north, $40 = west, $80 = south, $C0 = east
+Special_stage_green_spheres =	ramaddr( $FFFFE427 ) ; byte
 Special_stage_velocity =	ramaddr( $FFFFE428 ) ; word ; player's movement speed, negative when going backwards
 Special_stage_turning =		ramaddr( $FFFFE42A ) ; byte ; direction of next turn, 4 = left, -4 = right
 Special_stage_bumper_lock =	ramaddr( $FFFFE42B ) ; byte ; if set, the player can't start advancing by pressing up
