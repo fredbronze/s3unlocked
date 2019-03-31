@@ -47,7 +47,7 @@ namespace S3KObjectDefinitions.Common
 
 		public override void Init(ObjectData data)
 		{
-			BuildSprites(0x80);
+			BuildSprites(0x100);
 		}
 	}
 
