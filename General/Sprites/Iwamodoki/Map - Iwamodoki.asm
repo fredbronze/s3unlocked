@@ -1,13 +1,13 @@
-		dc.w word_8FCA4-Map_LRZExplodingRock
-		dc.w word_8FCAC-Map_LRZExplodingRock
-		dc.w word_8FCC0-Map_LRZExplodingRock
-		dc.w word_8FCD4-Map_LRZExplodingRock
-		dc.w word_8FCE8-Map_LRZExplodingRock
-		dc.w word_8FCFC-Map_LRZExplodingRock
-		dc.w word_8FD10-Map_LRZExplodingRock
-		dc.w word_8FD18-Map_LRZExplodingRock
-		dc.w word_8FD20-Map_LRZExplodingRock
-		dc.w word_8FD28-Map_LRZExplodingRock
+		dc.w word_8FCA4-Map_Iwamodoki
+		dc.w word_8FCAC-Map_Iwamodoki
+		dc.w word_8FCC0-Map_Iwamodoki
+		dc.w word_8FCD4-Map_Iwamodoki
+		dc.w word_8FCE8-Map_Iwamodoki
+		dc.w word_8FCFC-Map_Iwamodoki
+		dc.w word_8FD10-Map_Iwamodoki
+		dc.w word_8FD18-Map_Iwamodoki
+		dc.w word_8FD20-Map_Iwamodoki
+		dc.w word_8FD28-Map_Iwamodoki
 word_8FCA4:	dc.w 1			; DATA XREF: ROM:0008FC90o
 		dc.b  $F4,  $A,	$40,   0, $FF, $F4
 word_8FCAC:	dc.w 3			; DATA XREF: ROM:0008FC90o

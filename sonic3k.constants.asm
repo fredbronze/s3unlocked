@@ -38,7 +38,7 @@ subtype =		$2C ; byte
 ros_bit =		$3B ; byte ; the bit to be cleared when an object is destroyed if the ROS flag is set
 ros_addr =		$3C ; word ; the RAM address whose bit to clear when an object is destroyed if the ROS flag is set
 routine_secondary =	$3C ; byte ; used by monitors for this purpose at least
-vram_art =      $40 ; word ; address of art in VRAM (same as art_tile * $20)
+vram_art =		$40 ; word ; address of art in VRAM (same as art_tile * $20)
 parent =		$42 ; word ; address of the object that owns or spawned this one, if applicable
 child_dx = 		$42 ; byte ; X offset of child relative to parent
 child_dy = 		$43 ; byte ; Y offset of child relative to parent
@@ -208,19 +208,19 @@ Security_addr =			$A14000
 ; ---------------------------------------------------------------------------
 
 ; I/O Area 
-HW_Version =				$A10001
-HW_Port_1_Data =			$A10003
-HW_Port_2_Data =			$A10005
-HW_Expansion_Data =			$A10007
-HW_Port_1_Control =			$A10009
-HW_Port_2_Control =			$A1000B
+HW_Version =			$A10001
+HW_Port_1_Data =		$A10003
+HW_Port_2_Data =		$A10005
+HW_Expansion_Data =		$A10007
+HW_Port_1_Control =		$A10009
+HW_Port_2_Control =		$A1000B
 HW_Expansion_Control =		$A1000D
-HW_Port_1_TxData =			$A1000F
-HW_Port_1_RxData =			$A10011
-HW_Port_1_SCtrl =			$A10013
-HW_Port_2_TxData =			$A10015
-HW_Port_2_RxData =			$A10017
-HW_Port_2_SCtrl =			$A10019
+HW_Port_1_TxData =		$A1000F
+HW_Port_1_RxData =		$A10011
+HW_Port_1_SCtrl =		$A10013
+HW_Port_2_TxData =		$A10015
+HW_Port_2_RxData =		$A10017
+HW_Port_2_SCtrl =		$A10019
 HW_Expansion_TxData =		$A1001B
 HW_Expansion_RxData =		$A1001D
 HW_Expansion_SCtrl =		$A1001F
@@ -231,10 +231,6 @@ VDP_data_port =			$C00000
 VDP_control_port =		$C00004
 PSG_input =			$C00011
 ; ---------------------------------------------------------------------------
-
-; sign-extends a 32-bit integer to 64-bit
-; all RAM addresses are run through this function to allow them to work in both 16-bit and 32-bit addressing modes
-ramaddr function x,(-(x&$80000000)<<1)|x
 
 ; RAM addresses
 RAM_start =			ramaddr( $FFFF0000 )
@@ -247,8 +243,7 @@ Sprite_table_buffer_P2_2 =	ramaddr(   $FF7D80 ) ; $280 bytes ; alternate sprite 
 Level_layout_header =		ramaddr( $FFFF8000 ) ; 8 bytes ; first word = chunks per FG row, second word = chunks per BG row, third word = FG rows, fourth word = BG rows
 Level_layout_main =		ramaddr( $FFFF8008 ) ; $40 word-sized line pointers followed by actual layout data
 Block_table =			ramaddr( $FFFF9000 ) ; $1A00 bytes ; block (16x16) definitions, 8 bytes per definition
-SStage_collision_response_list = ramaddr( $FFFFA400 ) ; $100 bytes ; sprite collision list during a special stage
-
+SStage_collision_response_list := ramaddr( $FFFFA400 ) ; $100 bytes ; sprite collision list during a special stage
 Nem_code_table =		ramaddr( $FFFFAA00 ) ; $200 bytes ; code table is built up here and then used during decompression
 Sprite_table_input =		ramaddr( $FFFFAC00 ) ; $400 bytes ; 8 priority levels, $80 bytes per level
 
@@ -262,16 +257,14 @@ Level_object_RAM =		Dynamic_object_RAM_end ; $4EA bytes ; various fixed in-level
 Breathing_bubbles =		ramaddr( $FFFFCB2C ) ; for the main character
 Breathing_bubbles_P2 =		ramaddr( $FFFFCB76 ) ; for Tails in a Sonic and Tails game
 Super_stars =			ramaddr( $FFFFCBC0 ) ; for Super Sonic and Super Knuckles
-Hyper_trail =			ramaddr( $FFFFCBC0 ) ; for Hyper Sonic and Hyper Knuckles
 Tails_tails_2P =		ramaddr( $FFFFCBC0 ) ; Tails' tails in Competition mode
 Tails_tails =			ramaddr( $FFFFCC0A ) ; Tails' tails
 Dust =				ramaddr( $FFFFCC54 )
 Dust_P2 =			ramaddr( $FFFFCC9E )
 Shield =			ramaddr( $FFFFCCE8 )
 Shield_P2 =			ramaddr( $FFFFCD32 ) ; left over from Sonic 2 I'm guessing
-Hyper_Sonic_stars =		ramaddr( $FFFFCD7C )
-Super_Tails_birds =		ramaddr( $FFFFCD7C )
-Invincibility_stars =		ramaddr( $FFFFCEA4 )
+Invincibility_stars =		ramaddr( $FFFFCD7C )
+Invincibility_stars_P2 =	ramaddr( $FFFFCEA4 )
 
 Kos_decomp_buffer =		ramaddr( $FFFFD000 ) ; $1000 bytes ; each module in a KosM archive is decompressed here and then DMAed to VRAM
 H_scroll_buffer =		ramaddr( $FFFFE000 ) ; $380 bytes ; horizontal scroll table is built up here and then DMAed to VRAM
@@ -308,14 +301,14 @@ Special_stage_clear_routine =	ramaddr( $FFFFE44C ) ; byte ; if set, the player c
 Special_stage_emerald_timer =	ramaddr( $FFFFE44D ) ; byte ; counts down when the emerald appears, when it reaches 0 the emerald sound plays
 Special_stage_interact =	ramaddr( $FFFFE44E ) ; word ; address of the last bumper touched, or the emerald at the end of the stage
 Special_stage_started =		ramaddr( $FFFFE450 ) ; byte ; set when the player begins moving at the start of the stage
+
 Pos_table =			ramaddr( $FFFFE500 ) ; $100 bytes
 Competition_saved_data =	ramaddr( $FFFFE600 ) ; $54 bytes ; saved data from Competition Mode
-Save_pointer =			ramaddr( $FFFFE660 ) ; long ; pointer to the active save slot in 1 player mode
+Save_pointer :=			ramaddr( $FFFFE660 ) ; long ; pointer to the active save slot in 1 player mode
 
-Saved_data =			ramaddr( $FFFFE6AC ) ; $54 bytes ; saved data from 1 player mode
+Saved_data :=			ramaddr( $FFFFE6AC ) ; $54 bytes ; saved data from 1 player mode
 Ring_status_table =		ramaddr( $FFFFE700 ) ; $400 bytes ; 1 word per ring
 Object_respawn_table =		ramaddr( $FFFFEB00 ) ; $300 bytes ; 1 byte per object, every object in the level gets an entry
-
 Camera_RAM =			ramaddr( $FFFFEE00 ) ; various camera and scroll-related variables are stored here
 H_scroll_amount =		ramaddr( $FFFFEE00 ) ; word ; number of pixels camera scrolled horizontally in the last frame * $100
 V_scroll_amount =		ramaddr( $FFFFEE02 ) ; word ; number of pixels camera scrolled vertically in the last frame * $100
@@ -354,6 +347,7 @@ Apparent_zone_and_act =		ramaddr( $FFFFEE4E ) ; word
 Apparent_zone =			ramaddr( $FFFFEE4E ) ; byte ; always equal to actual zone
 Apparent_act =			ramaddr( $FFFFEE4F ) ; byte ; for example, after AIZ gets burnt, this indicates act 1 even though it's actually act 2
 Palette_fade_timer =		ramaddr( $FFFFEE50 ) ; word ; the palette gets faded in until this timer expires
+
 Act_3_flag =			ramaddr( $FFFFEE5E ) ; byte ; set when entering LRZ 3 or DEZ 3 directly from previous act. Prevents title card from loading
 Camera_X_pos_P2 =		ramaddr( $FFFFEE60 ) ; word
 Camera_Y_pos_P2 =		ramaddr( $FFFFEE64 ) ; word
@@ -381,11 +375,12 @@ Demo_data_addr =		ramaddr( $FFFFEE52 ) ; long ; keeps getting incremented as the
 SStage_results_object_addr =	ramaddr( $FFFFEEE0 ) ; word ; RAM address of the special stage results object
 Use_normal_sprite_table =	ramaddr( $FFFFEF3C ) ; word ; if this is set Sprite_table_buffer and Sprite_table_buffer_P2 will be DMAed instead of Sprite_table_buffer_2 and Sprite_table_buffer_P2_2
 SRAM_mask_interrupts_flag =	ramaddr( $FFFFEF56 ) ; word ; if this is set SRAM routines will mask all interrupts (by setting the SR to $2700)
+
 Object_index_addr =		ramaddr( $FFFFEF5A ) ; long ; points to either the object index for S3 levels or that for S&K levels
 Camera_Y_pos_coarse_back =	ramaddr( $FFFFEF64 ) ; word ; Camera_Y_pos_coarse - $80
 Ending_running_flag =		ramaddr( $FFFFEF72 ) ; word ; the only thing this does is prevent the game from pausing
 Plane_buffer_2_addr =		ramaddr( $FFFFEF74 ) ; long ; the address of the second plane buffer to process, if applicable
-Demo_number =			ramaddr( $FFFFEF7A ) ; byte ; the currently running demo
+Demo_number =			ramaddr( $FFFFEF7A ) ; word ; the currently running demo
 Ring_consumption_table =	ramaddr( $FFFFEF80 ) ; $80 bytes ; stores the addresses of all rings currently being consumed
 Ring_consumption_count =	ramaddr( $FFFFEF80 ) ; word ; the number of rings being consumed currently
 Ring_consumption_list =		ramaddr( $FFFFEF82 ) ; $7E bytes ; the remaining part of the ring consumption table
@@ -409,6 +404,7 @@ Ctrl_1_pressed =		ramaddr( $FFFFF605 ) ; byte ; buttons being pressed newly this
 Ctrl_2 =			ramaddr( $FFFFF606 ) ; word ; both held and pressed
 Ctrl_2_held =			ramaddr( $FFFFF606 ) ; byte
 Ctrl_2_pressed =		ramaddr( $FFFFF607 ) ; byte
+
 VDP_reg_1_command =		ramaddr( $FFFFF60E ) ; word ; AND the lower byte by $BF and write to VDP control port to disable display, OR by $40 to enable
 Demo_timer =			ramaddr( $FFFFF614 ) ; word ; the time left for a demo to start/run
 V_scroll_value =		ramaddr( $FFFFF616 ) ; long ; both foreground and background
@@ -442,7 +438,7 @@ Water_full_screen_flag =	ramaddr( $FFFFF64E ) ; byte ; set if water covers the e
 Do_Updates_in_H_int =		ramaddr( $FFFFF64F ) ; byte ; if this is set Do_Updates will be called from H-int instead of V-int
 Palette_frame =			ramaddr( $FFFFF65C ) ; word
 Palette_timer = 		ramaddr( $FFFFF65E ) ; byte
-Super_Hyper_palette_status =	ramaddr( $FFFFF65F ) ; byte ; appears to be a flag for the palette's current status: '0' for 'off', '1' for 'fading', -1 for 'fading done'
+Super_palette_status =		ramaddr( $FFFFF65F ) ; byte ; appears to be a flag for the palette's current status: '0' for 'off', '1' for 'fading', -1 for 'fading done'
 Hyper_Sonic_flash_timer =	ramaddr( $FFFFF666 ) ; byte ; used for Hyper Sonic's double jump move
 Super_Tails_flag =		ramaddr( $FFFFF667 ) ; byte
 Palette_frame_Tails =		ramaddr( $FFFFF668 ) ; byte ; Tails would use Palette_frame and Palette_timer, but they're reserved for his Super Flickies
@@ -450,7 +446,7 @@ Palette_timer_Tails =		ramaddr( $FFFFF669 ) ; byte
 Ctrl_2_logical =		ramaddr( $FFFFF66A ) ; word ; both held and pressed
 Ctrl_2_held_logical =		ramaddr( $FFFFF66A ) ; byte
 Ctrl_2_pressed_logical =	ramaddr( $FFFFF66B ) ; byte
-Super_Hyper_frame_count =	ramaddr( $FFFFF670 ) ; word
+Super_frame_count =		ramaddr( $FFFFF670 ) ; word
 Scroll_force_positions =	ramaddr( $FFFFF676 ) ; byte ; if this is set scrolling will be based on the two variables below rather than the player's actual position
 Scroll_forced_X_pos =		ramaddr( $FFFFF678 ) ; word
 Scroll_forced_Y_pos =		ramaddr( $FFFFF67C ) ; word
@@ -499,6 +495,7 @@ Boss_flag =			ramaddr( $FFFFF7AA ) ; byte ; set if a boss fight is going on
 Primary_collision_addr =	ramaddr( $FFFFF7B4 ) ; long
 Secondary_collision_addr =	ramaddr( $FFFFF7B8 ) ; long
 Reverse_gravity_flag =		ramaddr( $FFFFF7C6 ) ; byte
+
 WindTunnel_flag =		ramaddr( $FFFFF7C8 ) ; byte
 Ctrl_1_locked =			ramaddr( $FFFFF7CA ) ; byte
 Ctrl_2_locked =			ramaddr( $FFFFF7CB ) ; byte
@@ -643,33 +640,34 @@ Emerald_count =			ramaddr( $FFFFFFB0 ) ; word ; both chaos and super emeralds
 Chaos_emerald_count =		ramaddr( $FFFFFFB0 ) ; byte
 Super_emerald_count =		ramaddr( $FFFFFFB1 ) ; byte
 Collected_emeralds_array =	ramaddr( $FFFFFFB2 ) ; 7 bytes ; 1 byte per emerald, 0 = not collected, 1 = chaos emerald collected, 2 = grey super emerald, 3 = super emerald collected
+
 Emeralds_converted_flag =	ramaddr( $FFFFFFBA ) ; byte ; set if at least one emerald has been converted to a super emerald
 SK_special_stage_flag =		ramaddr( $FFFFFFBB ) ; byte ; set if a Sonic & Knuckles special stage is being run
 Next_extra_life_score =		ramaddr( $FFFFFFC0 ) ; long
 Next_extra_life_score_P2 =	ramaddr( $FFFFFFC4 ) ; long ; left over from Sonic 2
 
-Demo_mode_flag =		ramaddr( $FFFFFFD0 ) ; word
-Next_demo_number =		ramaddr( $FFFFFFD2 ) ; word
-Blue_spheres_stage_flag =	ramaddr( $FFFFFFD4 ) ; byte ; set if a Blue Spheres special stage is being run
-V_blank_cycles =		ramaddr( $FFFFFFD6 ) ; word ; the number of cycles between V-blanks
-Graphics_flags =		ramaddr( $FFFFFFD8 ) ; byte ; bit 7 set = English system, bit 6 set = PAL system
-Debug_mode_flag =		ramaddr( $FFFFFFDA ) ; word
-Level_select_flag =		ramaddr( $FFFFFFE0 ) ; byte
-Slow_motion_flag =		ramaddr( $FFFFFFE1 ) ; byte
-Debug_cheat_flag =		ramaddr( $FFFFFFE2 ) ; word ; set if the debug cheat's been entered
-Level_select_cheat_counter =	ramaddr( $FFFFFFE4 ) ; word ; progress entering S3 level select cheat
-Debug_mode_cheat_counter =	ramaddr( $FFFFFFE6 ) ; word ; progress entering S3 debug mode cheat
-Competition_mode =		ramaddr( $FFFFFFE8 ) ; word
-P1_character =			ramaddr( $FFFFFFEA ) ; byte ; 0 = Sonic, 1 = Tails, 2 = Knuckles
-P2_character =			ramaddr( $FFFFFFEB ) ; byte
+Demo_mode_flag :=		ramaddr( $FFFFFFD0 ) ; word
+Next_demo_number :=		ramaddr( $FFFFFFD2 ) ; word
+Blue_spheres_stage_flag :=	ramaddr( $FFFFFFD4 ) ; byte ; set if a Blue Sphere special stage is being run
+V_blank_cycles :=		ramaddr( $FFFFFFD6 ) ; word ; the number of cycles between V-blanks
+Graphics_flags :=		ramaddr( $FFFFFFD8 ) ; byte ; bit 7 set := English system, bit 6 set := PAL system
+Debug_mode_flag :=		ramaddr( $FFFFFFDA ) ; word
+Level_select_flag :=		ramaddr( $FFFFFFE0 ) ; byte
+Slow_motion_flag :=		ramaddr( $FFFFFFE1 ) ; byte
+Debug_cheat_flag :=		ramaddr( $FFFFFFE2 ) ; word ; set if the debug cheat's been entered
+Level_select_cheat_counter :=	ramaddr( $FFFFFFE4 ) ; word ; progress entering level select cheat, unused
+Debug_mode_cheat_counter :=	ramaddr( $FFFFFFE6 ) ; word ; progress entering debug mode cheat, unused
+Competition_mode :=		ramaddr( $FFFFFFE8 ) ; word
+P1_character :=			ramaddr( $FFFFFFEA ) ; byte ; 0 := Sonic, 1 := Tails, 2 := Knuckles
+P2_character :=			ramaddr( $FFFFFFEB ) ; byte
 Encore_stocks =			ramaddr( $FFFFFFEC ) ; word
 Encore_mode =			ramaddr( $FFFFFFEE ) ; byte
 
-V_int_jump =			ramaddr( $FFFFFFF0 ) ; 6 bytes ; contains an instruction to jump to the V-int handler
-V_int_addr =			ramaddr( $FFFFFFF2 ) ; long
-H_int_jump =			ramaddr( $FFFFFFF6 ) ; 6 bytes ; contains an instruction to jump to the H-int handler
-H_int_addr =			ramaddr( $FFFFFFF8 ) ; long
-Checksum_string =		ramaddr( $FFFFFFFC ) ; long ; set to 'SM&K' once the checksum routine has run
+V_int_jump :=			ramaddr( $FFFFFFF0 ) ; 6 bytes ; contains an instruction to jump to the V-int handler
+V_int_addr :=			ramaddr( $FFFFFFF2 ) ; long
+H_int_jump :=			ramaddr( $FFFFFFF6 ) ; 6 bytes ; contains an instruction to jump to the H-int handler
+H_int_addr :=			ramaddr( $FFFFFFF8 ) ; long
+Checksum_string :=		ramaddr( $FFFFFFFC ) ; long ; set to 'SM&K' once the checksum routine has run
 
 ; ---------------------------------------------------------------------------
 ; Art tile stuff
@@ -715,17 +713,3 @@ ArtTile_Shield_Sparks                 = $07BB
 ArtTile_LifeIcon                      = $07D4
 ArtTile_DashDust                      = $07E0
 ArtTile_DashDust_P2                   = $07F0
-
-; Codepage for level select
-
-	save
-	codepage LEVELSELECT
-	CHARSET '0','9', 16
-	CHARSET 'A','Z', 30
-	CHARSET 'a','z', 30
-	CHARSET '*', 26
-	CHARSET $A9, 27	; '©'
-	CHARSET ':', 28
-	CHARSET '.', 29
-	CHARSET ' ',  0
-	restore

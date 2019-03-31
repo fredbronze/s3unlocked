@@ -642,8 +642,8 @@ DAC_Banks:
 		db		zmake68kBank(DAC_A0_Data)            ,zmake68kBank(DAC_A1_Data)            ,zmake68kBank(DAC_A2_Data)            ,zmake68kBank(DAC_A3_Data)
 		db		zmake68kBank(DAC_A4_Data)            ,zmake68kBank(DAC_A5_Data)            ,zmake68kBank(DAC_A6_Data)            ,zmake68kBank(DAC_A7_Data)
 		db		zmake68kBank(DAC_A8_Data)            ,zmake68kBank(DAC_A9_Data)            ,zmake68kBank(DAC_AA_Data)            ,zmake68kBank(DAC_AB_Data)
-		db		zmake68kBank(DAC_AC_Data)            ,zmake68kBank(DAC_AD_AE_Data)         ,zmake68kBank(DAC_AD_AE_Data)         ,zmake68kBank(DAC_AF_B0_Data)
-		db		zmake68kBank(DAC_AF_B0_Data)         ,zmake68kBank(DAC_B1_Data)            ,zmake68kBank(DAC_B2_B3_Data_S3)      ,zmake68kBank(DAC_B2_B3_Data_S3)
+		db		zmake68kBank(DAC_AC_Data)            ,zmake68kBank(DAC_AD_AE_Data)         ,zmake68kBank(DAC_AD_AE_Data)         ,zmake68kBank(DAC_AF_Data)
+		db		zmake68kBank(DAC_AF_Data)            ,zmake68kBank(DAC_B1_Data)            ,zmake68kBank(DAC_B2_B3_Data_S3)      ,zmake68kBank(DAC_B2_B3_Data_S3)
 		db		zmake68kBank(DAC_B4_C1_C2_C3_C4_Data),zmake68kBank(DAC_B5_Data)            ,zmake68kBank(DAC_B6_Data)            ,zmake68kBank(DAC_B7_Data)
 		db		zmake68kBank(DAC_B8_B9_Data)         ,zmake68kBank(DAC_B8_B9_Data)         ,zmake68kBank(DAC_BA_Data)            ,zmake68kBank(DAC_BB_Data)
 		db		zmake68kBank(DAC_BC_Data)            ,zmake68kBank(DAC_BD_Data)            ,zmake68kBank(DAC_BE_Data)            ,zmake68kBank(DAC_BF_Data)
@@ -4894,8 +4894,8 @@ DAC_AB_Setup:			DAC_Setup $0D,DAC_AB_Data
 DAC_AC_Setup:			DAC_Setup $06,DAC_AC_Data
 DAC_AD_Setup:			DAC_Setup $10,DAC_AD_AE_Data
 DAC_AE_Setup:			DAC_Setup $18,DAC_AD_AE_Data
-DAC_AF_Setup:			DAC_Setup $09,DAC_AF_B0_Data
-DAC_B0_Setup:			DAC_Setup $12,DAC_AF_B0_Data
+DAC_AF_Setup:			DAC_Setup $09,DAC_AF_Data
+DAC_B0_Setup:			DAC_Setup $12,DAC_AF_Data
 DAC_B1_Setup:			DAC_Setup $18,DAC_B1_Data
 DAC_B2_Setup:			DAC_Setup $16,DAC_B2_B3_Data
 DAC_B3_Setup:			DAC_Setup $20,DAC_B2_B3_Data
@@ -5058,7 +5058,7 @@ DAC_AB_Setup2:			DAC_Null_Setup $0D,DAC_AB_Data
 DAC_AC_Setup2:			DAC_Null_Setup $06,DAC_AC_Data
 DAC_AD_Setup2:			DAC_Null_Setup $10,DAC_AD_AE_Data
 DAC_AE_Setup2:			DAC_Null_Chain $18,DAC_Invalid,DAC_AD_Setup2
-DAC_AF_Setup2:			DAC_Null_Setup $09,DAC_AF_B0_Data
+DAC_AF_Setup2:			DAC_Null_Setup $09,DAC_AF_Data
 DAC_B0_Setup2:			DAC_Null_Chain $12,DAC_Invalid,DAC_AF_Setup2
 DAC_B1_Setup2:			DAC_Null_Setup $18,DAC_B1_Data
 DAC_B2_Setup2:			DAC_Null_Setup $16,DAC_B2_B3_Data
@@ -5222,8 +5222,8 @@ DAC_AB_Setup3:			DAC_Setup $0D,DAC_AB_Data
 DAC_AC_Setup3:			DAC_Setup $06,DAC_AC_Data
 DAC_AD_Setup3:			DAC_Setup $10,DAC_AD_AE_Data
 DAC_AE_Setup3:			DAC_Setup $18,DAC_AD_AE_Data
-DAC_AF_Setup3:			DAC_Setup $09,DAC_AF_B0_Data
-DAC_B0_Setup3:			DAC_Setup $12,DAC_AF_B0_Data
+DAC_AF_Setup3:			DAC_Setup $09,DAC_AF_Data
+DAC_B0_Setup3:			DAC_Setup $12,DAC_AF_Data
 DAC_B1_Setup3:			DAC_Setup $18,DAC_B1_Data
 DAC_B2_Setup3:			DAC_Null_Chain $16,DAC_B2_B3_Data,DAC_B2_B3_Data_S3-3
 DAC_B3_Setup3:			DAC_Null_Chain $20,DAC_B2_B3_Data,DAC_B2_B3_Data_S3-3
@@ -5253,8 +5253,8 @@ DAC_A1_Setup3:			DAC_Null_Setup $0A,DAC_A1_Data
 DAC_AB_Data:			DACBINCLUDE "Sound/DAC/AB.bin"
 DAC_AC_Data:			DACBINCLUDE "Sound/DAC/AC.bin"
 DAC_AD_AE_Data:			DACBINCLUDE "Sound/DAC/AD-AE.bin"
-DAC_AF_B0_Data:			DACBINCLUDE "Sound/DAC/AF-B0.bin"
-DAC_B0_Data_S3:			DACBINCLUDE "Sound/DAC/Sonic 3 B0.bin"
+DAC_AF_Data:			DACBINCLUDE "Sound/DAC/AF.bin"
+DAC_B0_Data:			DACBINCLUDE "Sound/DAC/B0.bin"
 DAC_B1_Data:			DACBINCLUDE "Sound/DAC/B1.bin"
 DAC_B2_B3_Data_S3:		DACBINCLUDE "Sound/DAC/Sonic 3 B2-B3.bin"
 DAC_B4_C1_C2_C3_C4_Data:	DACBINCLUDE "Sound/DAC/B4C1-C4.bin"
